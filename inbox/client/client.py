@@ -5,7 +5,7 @@ from base64 import b64encode
 from six.moves.urllib.parse import urlencode
 from .util import url_concat, generate_id
 from .restful_model_collection import RestfulModelCollection
-from .restful_models import Namespace, File
+from .restful_models import Namespace, File, Draft
 from .errors import (APIClientError, ConnectionError, NotAuthorizedError,
                      APIError, NotFoundError, ServerError, ConflictError)
 from requests.exceptions import ConnectionError as RequestsConnectionError
