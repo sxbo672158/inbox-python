@@ -201,11 +201,15 @@ class APIClient(json.JSONEncoder):
         return map(lambda x: cls.create(self, namespace, **x), results)
 
     @inbox_excepted
-    def _delete_resource(self, namespace, cls, id):
+    def _delete_resource(self, namespace, cls, id, data=None):
         prefix = "/n/{}".format(namespace) if namespace else ''
         name = cls.collection_name
         url = "{}{}/{}/{}".format(self.api_server, prefix, name, id)
-        _validate(self.session.delete(url))
+        if cls == Draft:
+            data = json.dumps(data)
+            _validate(self.session.delete(url, data=data))
+        else:
+            _validate(self.session.delete(url))
 
     @inbox_excepted
     def _update_resource(self, namespace, cls, id, data):

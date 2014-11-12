@@ -98,8 +98,8 @@ class RestfulModelCollection():
     def create(self, **args):
         return self.model_class.create(self.api, self.namespace, **args)
 
-    def delete(self, id):
-        return self.api._delete_resource(self.namespace, self.model_class, id)
+    def delete(self, id, data=None):
+        return self.api._delete_resource(self.namespace, self.model_class, id, data)
 
     def __getitem__(self, offset):
         return self._get_model_collection(offset, 1)[0]
