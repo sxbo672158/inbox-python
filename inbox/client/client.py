@@ -54,7 +54,7 @@ def _validate(response):
                              data=data, message="ServerError.")
     else:
         raise APIClientError(url=url, status_code=status_code,
-                             data=data, message="Uknown status code.")
+                             data=data, message="Unknown status code.")
 
 
 def inbox_excepted(f):
